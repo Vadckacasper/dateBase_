@@ -17,7 +17,9 @@ namespace dateBase_
         public Form1()
         {
             InitializeComponent();
+            listBox_Wiew.Items.Add("Id\t" + "Name\t\t\t\t" + "Work\t\t\t" + "Date");
         }
+     
 
         private async void Form1_Load(object sender, EventArgs e)
         {
@@ -50,18 +52,68 @@ namespace dateBase_
             }
 
         }
-
+        //Выход
         private void ВыходToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (sqlConnection != null && sqlConnection.State != ConnectionState.Closed)
                 sqlConnection.Close();
-
+            this.Close();
         }
 
-        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+
+        private void LabelExit_Click(object sender, EventArgs e)
         {
+            
             if (sqlConnection != null && sqlConnection.State != ConnectionState.Closed)
                 sqlConnection.Close();
+            this.Close();
         }
+
+        private void LabelExit_MouseEnter(object sender, EventArgs e)
+        {
+            this.labelExit.ForeColor = Color.White;
+        }
+
+        private void LabelExit_MouseLeave(object sender, EventArgs e)
+        {
+           this.labelExit.ForeColor = Color.DimGray;  
+        }
+        //////////////////////////////
+
+        //Перетаскивание формы
+        Point lastPoint;
+        private void MenuStrip1_MouseMove(object sender, MouseEventArgs e)
+        {
+
+             if (e.Button == MouseButtons.Left)
+            {
+                this.Left += e.X - lastPoint.X;
+                this.Top += e.Y - lastPoint.Y;
+            }
+        }
+
+        private void MenuStrip1_MouseDown(object sender, MouseEventArgs e)
+        {
+            lastPoint = new Point(e.X, e.Y);
+        }
+        ///////////////////////
+        
+        //Свернуть
+        private void LabelRollUp_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+
+        private void LabelRollUp_MouseEnter(object sender, EventArgs e)
+        {
+            this.labelRollUp.ForeColor = Color.White;
+        }
+
+        private void LabelRollUp_MouseLeave(object sender, EventArgs e)
+        {
+            this.labelRollUp.ForeColor = Color.DimGray;
+        }
+        ///////////////////////
     }
 }
