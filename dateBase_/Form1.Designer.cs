@@ -39,10 +39,11 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.tabControl_actions = new System.Windows.Forms.TabControl();
             this.tabPage_INSERT = new System.Windows.Forms.TabPage();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.labelErorr = new System.Windows.Forms.Label();
+            this.buttonAdd = new System.Windows.Forms.Button();
+            this.textBoxDateAdd = new System.Windows.Forms.TextBox();
+            this.textBoxWorkAdd = new System.Windows.Forms.TextBox();
+            this.textBoxNameAdd = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -71,6 +72,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.labelErorr);
             this.panel1.Controls.Add(this.labelRollUp);
             this.panel1.Controls.Add(this.labelExit);
             this.panel1.Controls.Add(this.menuStrip1);
@@ -164,10 +166,10 @@
             // 
             // tabPage_INSERT
             // 
-            this.tabPage_INSERT.Controls.Add(this.button1);
-            this.tabPage_INSERT.Controls.Add(this.textBox3);
-            this.tabPage_INSERT.Controls.Add(this.textBox2);
-            this.tabPage_INSERT.Controls.Add(this.textBox1);
+            this.tabPage_INSERT.Controls.Add(this.buttonAdd);
+            this.tabPage_INSERT.Controls.Add(this.textBoxDateAdd);
+            this.tabPage_INSERT.Controls.Add(this.textBoxWorkAdd);
+            this.tabPage_INSERT.Controls.Add(this.textBoxNameAdd);
             this.tabPage_INSERT.Controls.Add(this.label3);
             this.tabPage_INSERT.Controls.Add(this.label2);
             this.tabPage_INSERT.Controls.Add(this.label1);
@@ -179,36 +181,47 @@
             this.tabPage_INSERT.Text = "INSERT";
             this.tabPage_INSERT.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // labelErorr
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(702, 25);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(71, 27);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Add";
-            this.button1.UseVisualStyleBackColor = true;
+            this.labelErorr.AutoSize = true;
+            this.labelErorr.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.labelErorr.Location = new System.Drawing.Point(278, 9);
+            this.labelErorr.Name = "labelErorr";
+            this.labelErorr.Size = new System.Drawing.Size(0, 17);
+            this.labelErorr.TabIndex = 3;
+            this.labelErorr.Visible = false;
             // 
-            // textBox3
+            // buttonAdd
             // 
-            this.textBox3.Location = new System.Drawing.Point(510, 27);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(153, 22);
-            this.textBox3.TabIndex = 1;
+            this.buttonAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonAdd.Location = new System.Drawing.Point(702, 25);
+            this.buttonAdd.Name = "buttonAdd";
+            this.buttonAdd.Size = new System.Drawing.Size(71, 27);
+            this.buttonAdd.TabIndex = 2;
+            this.buttonAdd.Text = "Add";
+            this.buttonAdd.UseVisualStyleBackColor = true;
+            this.buttonAdd.Click += new System.EventHandler(this.ButtonAdd_Click);
             // 
-            // textBox2
+            // textBoxDateAdd
             // 
-            this.textBox2.Location = new System.Drawing.Point(291, 27);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(153, 22);
-            this.textBox2.TabIndex = 1;
+            this.textBoxDateAdd.Location = new System.Drawing.Point(510, 27);
+            this.textBoxDateAdd.Name = "textBoxDateAdd";
+            this.textBoxDateAdd.Size = new System.Drawing.Size(153, 22);
+            this.textBoxDateAdd.TabIndex = 1;
             // 
-            // textBox1
+            // textBoxWorkAdd
             // 
-            this.textBox1.Location = new System.Drawing.Point(69, 27);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(153, 22);
-            this.textBox1.TabIndex = 1;
+            this.textBoxWorkAdd.Location = new System.Drawing.Point(291, 27);
+            this.textBoxWorkAdd.Name = "textBoxWorkAdd";
+            this.textBoxWorkAdd.Size = new System.Drawing.Size(153, 22);
+            this.textBoxWorkAdd.TabIndex = 1;
+            // 
+            // textBoxNameAdd
+            // 
+            this.textBoxNameAdd.Location = new System.Drawing.Point(69, 27);
+            this.textBoxNameAdd.Name = "textBoxNameAdd";
+            this.textBoxNameAdd.Size = new System.Drawing.Size(153, 22);
+            this.textBoxNameAdd.TabIndex = 1;
             // 
             // label3
             // 
@@ -354,13 +367,13 @@
         private System.Windows.Forms.TabPage tabPage_UPDATE;
         private System.Windows.Forms.TabPage tabPage_DELETE;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxWorkAdd;
+        private System.Windows.Forms.TextBox textBoxNameAdd;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Button buttonAdd;
+        private System.Windows.Forms.TextBox textBoxDateAdd;
         private System.Windows.Forms.Label labelExit;
         private System.Windows.Forms.Label labelRollUp;
         private System.Windows.Forms.DataGridView dataGridView;
@@ -368,6 +381,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnWork;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDate;
+        private System.Windows.Forms.Label labelErorr;
     }
 }
 
