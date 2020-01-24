@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
+            this.labelRollUp = new System.Windows.Forms.Label();
             this.labelExit = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -48,14 +49,18 @@
             this.tabPage_UPDATE = new System.Windows.Forms.TabPage();
             this.tabPage_DELETE = new System.Windows.Forms.TabPage();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.listBox_Wiew = new System.Windows.Forms.ListBox();
-            this.labelRollUp = new System.Windows.Forms.Label();
+            this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.ColumnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnWork = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tabControl_actions.SuspendLayout();
             this.tabPage_INSERT.SuspendLayout();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // contextMenuStrip1
@@ -74,6 +79,21 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(997, 34);
             this.panel1.TabIndex = 2;
+            // 
+            // labelRollUp
+            // 
+            this.labelRollUp.AutoSize = true;
+            this.labelRollUp.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.labelRollUp.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelRollUp.ForeColor = System.Drawing.Color.DimGray;
+            this.labelRollUp.Location = new System.Drawing.Point(942, 9);
+            this.labelRollUp.Name = "labelRollUp";
+            this.labelRollUp.Size = new System.Drawing.Size(26, 19);
+            this.labelRollUp.TabIndex = 2;
+            this.labelRollUp.Text = "—";
+            this.labelRollUp.Click += new System.EventHandler(this.LabelRollUp_Click);
+            this.labelRollUp.MouseEnter += new System.EventHandler(this.LabelRollUp_MouseEnter);
+            this.labelRollUp.MouseLeave += new System.EventHandler(this.LabelRollUp_MouseLeave);
             // 
             // labelExit
             // 
@@ -238,39 +258,62 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.listBox_Wiew);
+            this.panel3.Controls.Add(this.dataGridView);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(0, 142);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(997, 430);
             this.panel3.TabIndex = 4;
             // 
-            // listBox_Wiew
+            // dataGridView
             // 
-            this.listBox_Wiew.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.listBox_Wiew.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listBox_Wiew.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.listBox_Wiew.FormattingEnabled = true;
-            this.listBox_Wiew.ItemHeight = 16;
-            this.listBox_Wiew.Location = new System.Drawing.Point(0, 0);
-            this.listBox_Wiew.Name = "listBox_Wiew";
-            this.listBox_Wiew.Size = new System.Drawing.Size(997, 430);
-            this.listBox_Wiew.TabIndex = 0;
+            this.dataGridView.AllowUserToAddRows = false;
+            this.dataGridView.AllowUserToDeleteRows = false;
+            this.dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColumnId,
+            this.ColumnName,
+            this.ColumnWork,
+            this.ColumnDate});
+            this.dataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView.Name = "dataGridView";
+            this.dataGridView.ReadOnly = true;
+            this.dataGridView.RowHeadersVisible = false;
+            this.dataGridView.RowHeadersWidth = 51;
+            this.dataGridView.RowTemplate.Height = 24;
+            this.dataGridView.Size = new System.Drawing.Size(997, 430);
+            this.dataGridView.TabIndex = 0;
             // 
-            // labelRollUp
+            // ColumnId
             // 
-            this.labelRollUp.AutoSize = true;
-            this.labelRollUp.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.labelRollUp.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelRollUp.ForeColor = System.Drawing.Color.DimGray;
-            this.labelRollUp.Location = new System.Drawing.Point(942, 9);
-            this.labelRollUp.Name = "labelRollUp";
-            this.labelRollUp.Size = new System.Drawing.Size(26, 19);
-            this.labelRollUp.TabIndex = 2;
-            this.labelRollUp.Text = "—";
-            this.labelRollUp.Click += new System.EventHandler(this.LabelRollUp_Click);
-            this.labelRollUp.MouseEnter += new System.EventHandler(this.LabelRollUp_MouseEnter);
-            this.labelRollUp.MouseLeave += new System.EventHandler(this.LabelRollUp_MouseLeave);
+            this.ColumnId.FillWeight = 50F;
+            this.ColumnId.HeaderText = "Id";
+            this.ColumnId.MinimumWidth = 6;
+            this.ColumnId.Name = "ColumnId";
+            this.ColumnId.ReadOnly = true;
+            // 
+            // ColumnName
+            // 
+            this.ColumnName.HeaderText = "Name";
+            this.ColumnName.MinimumWidth = 6;
+            this.ColumnName.Name = "ColumnName";
+            this.ColumnName.ReadOnly = true;
+            // 
+            // ColumnWork
+            // 
+            this.ColumnWork.HeaderText = "Work";
+            this.ColumnWork.MinimumWidth = 6;
+            this.ColumnWork.Name = "ColumnWork";
+            this.ColumnWork.ReadOnly = true;
+            // 
+            // ColumnDate
+            // 
+            this.ColumnDate.HeaderText = "Date";
+            this.ColumnDate.MinimumWidth = 6;
+            this.ColumnDate.Name = "ColumnDate";
+            this.ColumnDate.ReadOnly = true;
             // 
             // Form1
             // 
@@ -293,6 +336,7 @@
             this.tabPage_INSERT.ResumeLayout(false);
             this.tabPage_INSERT.PerformLayout();
             this.panel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -310,7 +354,6 @@
         private System.Windows.Forms.TabPage tabPage_UPDATE;
         private System.Windows.Forms.TabPage tabPage_DELETE;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.ListBox listBox_Wiew;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label3;
@@ -320,6 +363,11 @@
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label labelExit;
         private System.Windows.Forms.Label labelRollUp;
+        private System.Windows.Forms.DataGridView dataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnWork;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDate;
     }
 }
 

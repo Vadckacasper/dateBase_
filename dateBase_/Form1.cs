@@ -17,7 +17,6 @@ namespace dateBase_
         public Form1()
         {
             InitializeComponent();
-            listBox_Wiew.Items.Add("Id\t" + "Name\t\t\t\t" + "Work\t\t\t" + "Date");
         }
      
 
@@ -37,7 +36,7 @@ namespace dateBase_
 
                 while (await sqlReader.ReadAsync())
                 {
-                    listBox_Wiew.Items.Add(Convert.ToString(sqlReader["id"]) + "\t" + Convert.ToString(sqlReader["Name"]) + "\t" + Convert.ToString(sqlReader["Work"]) + "\t" + Convert.ToString(sqlReader["date"]));
+                    dataGridView.Rows.Add(Convert.ToString(sqlReader["id"]) , Convert.ToString(sqlReader["Name"]) , Convert.ToString(sqlReader["Work"]) , Convert.ToString(sqlReader["Date"]));
                 }
 
             }
