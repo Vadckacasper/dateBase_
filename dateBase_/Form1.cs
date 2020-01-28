@@ -20,7 +20,7 @@ namespace dateBase_
         public Form1()
         {
             InitializeComponent();
-          
+
         }
 
 
@@ -174,36 +174,46 @@ namespace dateBase_
                 sqlReader.Close();
         }/////////////////////
 
-        
+
 
 
 
         //Обновление в таблице и в бд
         private async void DataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-
+            if (RowIndex >= dataGridView.Rows.Count) //срабатывает после удаления последней строки
+            {
+                CurrentCellText = Convert.ToString(dataGridView.CurrentCell.Value);
+                RowIndex = dataGridView.CurrentCell.RowIndex;
+                ColumnIndex = dataGridView.CurrentCell.ColumnIndex;
+            }
             String temp = Convert.ToString(dataGridView[ColumnIndex, RowIndex].Value);
             if (CurrentCellText != temp)
             {
-                if (temp == "")
+                if (temp == "") //проверка на пустоту строки
                 {
                     dataGridView[ColumnIndex, RowIndex].Value = CurrentCellText;
-                }else
+                }
+                else if (Convert.ToString(dataGridView[0, RowIndex].Value) == "") //проверка id
+                {
+                    // добавление в бд (сделать)
+                }
+                else //изменение в бд
                 {
                     SqlCommand command = null;
                     switch (ColumnIndex)
                     {
-                        case 1:
+                        case 1: //Имя
                             command = new SqlCommand("UPDATE [Test] SET [Name] = @Name WHERE [Id] = @Id", sqlConnection);
                             command.Parameters.AddWithValue("id", Convert.ToInt32(dataGridView[0, RowIndex].Value));
                             command.Parameters.AddWithValue("Name", temp);
                             break;
-                        case 2:
+                        case 2://Работа
                             command = new SqlCommand("UPDATE [Test] SET [Work] = @Work WHERE [Id] = @Id", sqlConnection);
                             command.Parameters.AddWithValue("id", Convert.ToInt32(dataGridView[0, RowIndex].Value));
                             command.Parameters.AddWithValue("Work", temp);
                             break;
-                        case 3:
+                        case 3://Дата
                             command = new SqlCommand("UPDATE [Test] SET [Date] = @Date WHERE [Id] = @Id", sqlConnection);
                             command.Parameters.AddWithValue("id", Convert.ToInt32(dataGridView[0, RowIndex].Value));
                             command.Parameters.AddWithValue("Date", temp);
@@ -220,8 +230,23 @@ namespace dateBase_
             CurrentCellText = Convert.ToString(dataGridView.CurrentCell.Value);
             RowIndex = dataGridView.CurrentCell.RowIndex;
             ColumnIndex = dataGridView.CurrentCell.ColumnIndex;
+        }/////////////////////////////////////////
+
+        //Контекстное меню
+        private void DataGridView_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            e.Control.ContextMenuStrip = contextMenuStrip1;
         }
-    }/////////////////////////////////////////
+
+        private void УдалитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SqlCommand command = new SqlCommand("DELETE FROM [Test] WHERE [Id] = @Id", sqlConnection);
+            command.Parameters.AddWithValue("@Id", dataGridView[0, RowIndex].Value);
+            command.ExecuteNonQuery();
+
+            dataGridView.Rows.RemoveAt(dataGridView.CurrentCell.RowIndex);//удалене строки
+        }
+    }
     
 }
 

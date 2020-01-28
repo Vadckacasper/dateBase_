@@ -47,13 +47,14 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.tabPage_DELETE = new System.Windows.Forms.TabPage();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.ColumnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnWork = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.удалитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -66,8 +67,10 @@
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.удалитьToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(135, 28);
             // 
             // panel1
             // 
@@ -148,7 +151,7 @@
             // выходToolStripMenuItem
             // 
             this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
-            this.выходToolStripMenuItem.Size = new System.Drawing.Size(116, 26);
+            this.выходToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.выходToolStripMenuItem.Text = "Exit";
             this.выходToolStripMenuItem.Click += new System.EventHandler(this.ВыходToolStripMenuItem_Click);
             // 
@@ -164,7 +167,6 @@
             // tabControl_actions
             // 
             this.tabControl_actions.Controls.Add(this.tabPage_INSERT);
-            this.tabControl_actions.Controls.Add(this.tabPage_DELETE);
             this.tabControl_actions.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl_actions.Location = new System.Drawing.Point(0, 0);
             this.tabControl_actions.Name = "tabControl_actions";
@@ -248,15 +250,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Name";
             // 
-            // tabPage_DELETE
-            // 
-            this.tabPage_DELETE.Location = new System.Drawing.Point(4, 25);
-            this.tabPage_DELETE.Name = "tabPage_DELETE";
-            this.tabPage_DELETE.Size = new System.Drawing.Size(989, 79);
-            this.tabPage_DELETE.TabIndex = 2;
-            this.tabPage_DELETE.Text = "DELETE";
-            this.tabPage_DELETE.UseVisualStyleBackColor = true;
-            // 
             // panel3
             // 
             this.panel3.Controls.Add(this.dataGridView);
@@ -268,6 +261,7 @@
             // 
             // dataGridView
             // 
+            this.dataGridView.AllowUserToAddRows = false;
             this.dataGridView.AllowUserToDeleteRows = false;
             this.dataGridView.AllowUserToOrderColumns = true;
             this.dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -277,6 +271,7 @@
             this.ColumnName,
             this.ColumnWork,
             this.ColumnDate});
+            this.dataGridView.ContextMenuStrip = this.contextMenuStrip1;
             this.dataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dataGridView.Location = new System.Drawing.Point(0, 0);
@@ -288,6 +283,7 @@
             this.dataGridView.TabIndex = 0;
             this.dataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView_CellClick);
             this.dataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView_CellEndEdit);
+            this.dataGridView.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.DataGridView_EditingControlShowing);
             // 
             // ColumnId
             // 
@@ -319,6 +315,13 @@
             this.ColumnDate.MinimumWidth = 6;
             this.ColumnDate.Name = "ColumnDate";
             // 
+            // удалитьToolStripMenuItem
+            // 
+            this.удалитьToolStripMenuItem.Name = "удалитьToolStripMenuItem";
+            this.удалитьToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.удалитьToolStripMenuItem.Text = "Удалить";
+            this.удалитьToolStripMenuItem.Click += new System.EventHandler(this.УдалитьToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -331,6 +334,7 @@
             this.Name = "Form1";
             this.Text = "Working with databases";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.contextMenuStrip1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
@@ -355,7 +359,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TabControl tabControl_actions;
         private System.Windows.Forms.TabPage tabPage_INSERT;
-        private System.Windows.Forms.TabPage tabPage_DELETE;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.TextBox textBoxWorkAdd;
         private System.Windows.Forms.TextBox textBoxNameAdd;
@@ -372,6 +375,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnWork;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDate;
+        private System.Windows.Forms.ToolStripMenuItem удалитьToolStripMenuItem;
     }
 }
 
