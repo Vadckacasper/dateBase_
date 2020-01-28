@@ -14,9 +14,13 @@ namespace dateBase_
     public partial class Form1 : Form
     {
         SqlConnection sqlConnection;
+        String CurrentCellText = null;
+        int RowIndex = 0;
+        int ColumnIndex = 0;
         public Form1()
         {
             InitializeComponent();
+          
         }
 
 
@@ -38,6 +42,9 @@ namespace dateBase_
                 {
                     dataGridView.Rows.Add(Convert.ToString(sqlReader["id"]), Convert.ToString(sqlReader["Name"]), Convert.ToString(sqlReader["Work"]), Convert.ToString(sqlReader["Date"]));
                 }
+                CurrentCellText = Convert.ToString(dataGridView[1, 0].Value);
+                RowIndex = 0;
+                ColumnIndex = 1;
 
             }
             catch (Exception ex)
@@ -143,7 +150,7 @@ namespace dateBase_
 
         }
         //////////////////////
-        
+
         //Вывод в таблицу по ID
         private async void OutputByID(int lastID)
         {
@@ -166,8 +173,55 @@ namespace dateBase_
             if (sqlReader != null)
                 sqlReader.Close();
         }/////////////////////
-        
-    }
 
+        
+
+
+
+        //Обновление в таблице и в бд
+        private async void DataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+
+            String temp = Convert.ToString(dataGridView[ColumnIndex, RowIndex].Value);
+            if (CurrentCellText != temp)
+            {
+                if (temp == "")
+                {
+                    dataGridView[ColumnIndex, RowIndex].Value = CurrentCellText;
+                }else
+                {
+                    SqlCommand command = null;
+                    switch (ColumnIndex)
+                    {
+                        case 1:
+                            command = new SqlCommand("UPDATE [Test] SET [Name] = @Name WHERE [Id] = @Id", sqlConnection);
+                            command.Parameters.AddWithValue("id", Convert.ToInt32(dataGridView[0, RowIndex].Value));
+                            command.Parameters.AddWithValue("Name", temp);
+                            break;
+                        case 2:
+                            command = new SqlCommand("UPDATE [Test] SET [Work] = @Work WHERE [Id] = @Id", sqlConnection);
+                            command.Parameters.AddWithValue("id", Convert.ToInt32(dataGridView[0, RowIndex].Value));
+                            command.Parameters.AddWithValue("Work", temp);
+                            break;
+                        case 3:
+                            command = new SqlCommand("UPDATE [Test] SET [Date] = @Date WHERE [Id] = @Id", sqlConnection);
+                            command.Parameters.AddWithValue("id", Convert.ToInt32(dataGridView[0, RowIndex].Value));
+                            command.Parameters.AddWithValue("Date", temp);
+                            break;
+
+                    }
+                    await command.ExecuteNonQueryAsync();
+                }
+            }
+        }
+
+        private void DataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            CurrentCellText = Convert.ToString(dataGridView.CurrentCell.Value);
+            RowIndex = dataGridView.CurrentCell.RowIndex;
+            ColumnIndex = dataGridView.CurrentCell.ColumnIndex;
+        }
+    }/////////////////////////////////////////
+    
 }
 

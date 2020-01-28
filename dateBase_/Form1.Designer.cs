@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
+            this.labelErorr = new System.Windows.Forms.Label();
             this.labelRollUp = new System.Windows.Forms.Label();
             this.labelExit = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -39,7 +40,6 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.tabControl_actions = new System.Windows.Forms.TabControl();
             this.tabPage_INSERT = new System.Windows.Forms.TabPage();
-            this.labelErorr = new System.Windows.Forms.Label();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.textBoxDateAdd = new System.Windows.Forms.TextBox();
             this.textBoxWorkAdd = new System.Windows.Forms.TextBox();
@@ -47,7 +47,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.tabPage_UPDATE = new System.Windows.Forms.TabPage();
             this.tabPage_DELETE = new System.Windows.Forms.TabPage();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dataGridView = new System.Windows.Forms.DataGridView();
@@ -81,6 +80,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(997, 34);
             this.panel1.TabIndex = 2;
+            // 
+            // labelErorr
+            // 
+            this.labelErorr.AutoSize = true;
+            this.labelErorr.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.labelErorr.Location = new System.Drawing.Point(278, 9);
+            this.labelErorr.Name = "labelErorr";
+            this.labelErorr.Size = new System.Drawing.Size(0, 17);
+            this.labelErorr.TabIndex = 3;
+            this.labelErorr.Visible = false;
             // 
             // labelRollUp
             // 
@@ -155,7 +164,6 @@
             // tabControl_actions
             // 
             this.tabControl_actions.Controls.Add(this.tabPage_INSERT);
-            this.tabControl_actions.Controls.Add(this.tabPage_UPDATE);
             this.tabControl_actions.Controls.Add(this.tabPage_DELETE);
             this.tabControl_actions.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl_actions.Location = new System.Drawing.Point(0, 0);
@@ -180,16 +188,6 @@
             this.tabPage_INSERT.TabIndex = 0;
             this.tabPage_INSERT.Text = "INSERT";
             this.tabPage_INSERT.UseVisualStyleBackColor = true;
-            // 
-            // labelErorr
-            // 
-            this.labelErorr.AutoSize = true;
-            this.labelErorr.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.labelErorr.Location = new System.Drawing.Point(278, 9);
-            this.labelErorr.Name = "labelErorr";
-            this.labelErorr.Size = new System.Drawing.Size(0, 17);
-            this.labelErorr.TabIndex = 3;
-            this.labelErorr.Visible = false;
             // 
             // buttonAdd
             // 
@@ -250,16 +248,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Name";
             // 
-            // tabPage_UPDATE
-            // 
-            this.tabPage_UPDATE.Location = new System.Drawing.Point(4, 25);
-            this.tabPage_UPDATE.Name = "tabPage_UPDATE";
-            this.tabPage_UPDATE.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage_UPDATE.Size = new System.Drawing.Size(989, 79);
-            this.tabPage_UPDATE.TabIndex = 1;
-            this.tabPage_UPDATE.Text = "UPDATE";
-            this.tabPage_UPDATE.UseVisualStyleBackColor = true;
-            // 
             // tabPage_DELETE
             // 
             this.tabPage_DELETE.Location = new System.Drawing.Point(4, 25);
@@ -280,8 +268,8 @@
             // 
             // dataGridView
             // 
-            this.dataGridView.AllowUserToAddRows = false;
             this.dataGridView.AllowUserToDeleteRows = false;
+            this.dataGridView.AllowUserToOrderColumns = true;
             this.dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -290,14 +278,16 @@
             this.ColumnWork,
             this.ColumnDate});
             this.dataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dataGridView.Location = new System.Drawing.Point(0, 0);
             this.dataGridView.Name = "dataGridView";
-            this.dataGridView.ReadOnly = true;
             this.dataGridView.RowHeadersVisible = false;
             this.dataGridView.RowHeadersWidth = 51;
             this.dataGridView.RowTemplate.Height = 24;
             this.dataGridView.Size = new System.Drawing.Size(997, 430);
             this.dataGridView.TabIndex = 0;
+            this.dataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView_CellClick);
+            this.dataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView_CellEndEdit);
             // 
             // ColumnId
             // 
@@ -306,27 +296,28 @@
             this.ColumnId.MinimumWidth = 6;
             this.ColumnId.Name = "ColumnId";
             this.ColumnId.ReadOnly = true;
+            this.ColumnId.Visible = false;
             // 
             // ColumnName
             // 
+            this.ColumnName.ContextMenuStrip = this.contextMenuStrip1;
             this.ColumnName.HeaderText = "Name";
             this.ColumnName.MinimumWidth = 6;
             this.ColumnName.Name = "ColumnName";
-            this.ColumnName.ReadOnly = true;
             // 
             // ColumnWork
             // 
+            this.ColumnWork.ContextMenuStrip = this.contextMenuStrip1;
             this.ColumnWork.HeaderText = "Work";
             this.ColumnWork.MinimumWidth = 6;
             this.ColumnWork.Name = "ColumnWork";
-            this.ColumnWork.ReadOnly = true;
             // 
             // ColumnDate
             // 
+            this.ColumnDate.ContextMenuStrip = this.contextMenuStrip1;
             this.ColumnDate.HeaderText = "Date";
             this.ColumnDate.MinimumWidth = 6;
             this.ColumnDate.Name = "ColumnDate";
-            this.ColumnDate.ReadOnly = true;
             // 
             // Form1
             // 
@@ -364,7 +355,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TabControl tabControl_actions;
         private System.Windows.Forms.TabPage tabPage_INSERT;
-        private System.Windows.Forms.TabPage tabPage_UPDATE;
         private System.Windows.Forms.TabPage tabPage_DELETE;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.TextBox textBoxWorkAdd;
@@ -377,11 +367,11 @@
         private System.Windows.Forms.Label labelExit;
         private System.Windows.Forms.Label labelRollUp;
         private System.Windows.Forms.DataGridView dataGridView;
+        private System.Windows.Forms.Label labelErorr;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnWork;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDate;
-        private System.Windows.Forms.Label labelErorr;
     }
 }
 
