@@ -47,10 +47,6 @@ namespace dateBase_
                 ColumnIndex = 1;
 
             }
-            catch (Exception ex)
-            {
-
-            }
             finally
             {
                 if (sqlReader != null)
@@ -166,12 +162,11 @@ namespace dateBase_
                     dataGridView.Rows.Add(Convert.ToString(sqlReader["id"]), Convert.ToString(sqlReader["Name"]), Convert.ToString(sqlReader["Work"]), Convert.ToString(sqlReader["Date"]));
                 }
             }
-            catch (Exception ex)
+            finally
             {
-
+                if (sqlReader != null)
+                    sqlReader.Close();
             }
-            if (sqlReader != null)
-                sqlReader.Close();
         }/////////////////////
 
 
