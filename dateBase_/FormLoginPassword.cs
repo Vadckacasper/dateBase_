@@ -72,17 +72,20 @@ namespace dateBase_
         private void Button1_Click(object sender, EventArgs e)
         {
             bool success = false;
+            bool temp = false;
             try
             {
                 sqlConnection = new SqlConnection(stringConnection);
                 SqlCommand command = new SqlCommand("SELECT * FROM [Log in] WHERE Login = @Login AND Password = @Password", sqlConnection);
                 command.Parameters.AddWithValue("@Login", textBoxLogin.Text);
-                command.Parameters.AddWithValue("Password", textBoxPassword.Text);
+                command.Parameters.AddWithValue("@Password", textBoxPassword.Text);
                 sqlConnection.Open();
 
                 using (var dataReader = command.ExecuteReader())
                 {
                     success = dataReader.Read();
+                    temp = Convert.ToBoolean(dataReader["AccessTest"]);
+
                 }
             }
             finally
@@ -92,10 +95,19 @@ namespace dateBase_
             
             if (success)
             {
-                Form1 form1 = new Form1();
-                Hide();
-                form1.ShowDialog();
-                this.Close();
+                if (temp)
+                {
+                    Form1 form1 = new Form1();
+                    Hide();
+                    form1.ShowDialog();
+                    this.Close();
+                }else
+                {
+                    FormWork form1 = new FormWork(textBoxLogin.Text);
+                    Hide();
+                    form1.ShowDialog();
+                    this.Close();
+                }
                 
             }
             else

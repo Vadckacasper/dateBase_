@@ -40,17 +40,14 @@ namespace dateBase_
 
                 while (await sqlReader.ReadAsync())
                 {
-                    dataGridView.Rows.Add(Convert.ToString(sqlReader["id"]), Convert.ToString(sqlReader["Name"]), Convert.ToString(sqlReader["Work"]), Convert.ToString(sqlReader["Date"]));
-                }
-                CurrentCellText = Convert.ToString(dataGridView[1, 0].Value);
-                RowIndex = 0;
-                ColumnIndex = 1;
-
+                    dataGridView.Rows.Add(Convert.ToString(sqlReader["Login"]), Convert.ToString(sqlReader["Name"]), Convert.ToString(sqlReader["Paul"]), Convert.ToString(sqlReader["Age"]), Convert.ToString(sqlReader["Position"]), Convert.ToString(sqlReader["Arranged"]), Convert.ToString(sqlReader["Time"]), Convert.ToString(sqlReader["id"]));
+                    }
             }
             finally
             {
                 if (sqlReader != null)
                     sqlReader.Close();
+
             }
 
         }
@@ -118,48 +115,20 @@ namespace dateBase_
         }
         ///////////////////////
 
-        //Добавление в БД
-        private async void ButtonAdd_Click(object sender, EventArgs e)
-        {
-            if (textBoxNameAdd.Text == "" || textBoxWorkAdd.Text == "" || textBoxDateAdd.Text == "")
-            {
-                labelErorr.Text = "Для добавление в базу, все поля должны быть заполнены!";
-                labelErorr.Visible = true;
-            }
-            else
-            {
-                labelErorr.Visible = false;
-                SqlCommand commandAdd = new SqlCommand("INSERT INTO [Test] (Name, Work, Date)VALUES(@Name,@Work,@Date)", sqlConnection);
 
-                commandAdd.Parameters.AddWithValue("Name", textBoxNameAdd.Text);
-                commandAdd.Parameters.AddWithValue("Work", textBoxWorkAdd.Text);
-                commandAdd.Parameters.AddWithValue("Date", textBoxDateAdd.Text);
-
-                await commandAdd.ExecuteNonQueryAsync();
-
-                commandAdd.CommandText = "SELECT @@IDENTITY";
-                int lastID = Convert.ToInt32(commandAdd.ExecuteScalar());
-
-                //Вывод добавленной строки
-                OutputByID(lastID);
-            }
-
-        }
-        //////////////////////
 
         //Вывод в таблицу по ID
-        private async void OutputByID(int lastID)
+        private async void OutputByID(string lastID)
         {
-            SqlCommand command = new SqlCommand("SELECT * FROM [Test] WHERE id=" + Convert.ToString(lastID), sqlConnection);
+            SqlCommand command = new SqlCommand("SELECT * FROM [Log in] WHERE Login = @Login" , sqlConnection);
             SqlDataReader sqlReader = null;
-
+            command.Parameters.AddWithValue("Login", Convert.ToString(lastID));
             try
             {
                 sqlReader = await command.ExecuteReaderAsync();
-
                 while (await sqlReader.ReadAsync())
                 {
-                    dataGridView.Rows.Add(Convert.ToString(sqlReader["id"]), Convert.ToString(sqlReader["Name"]), Convert.ToString(sqlReader["Work"]), Convert.ToString(sqlReader["Date"]));
+                    dataGridViewLog.Rows.Add(Convert.ToString(sqlReader["Login"]), Convert.ToString(sqlReader["Password"]), Convert.ToString(sqlReader["Name"]), Convert.ToString(sqlReader["AccessTest"]));
                 }
             }
             finally
@@ -171,47 +140,81 @@ namespace dateBase_
 
 
 
+        //Контекстное меню
 
-
-        //Обновление в таблице и в бд
-        private async void DataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        private void УдалитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (RowIndex >= dataGridView.Rows.Count) //срабатывает после удаления последней строки
+            SqlCommand command = new SqlCommand("DELETE FROM [Test] WHERE [Login] = @Login", sqlConnection);
+            command.Parameters.AddWithValue("@Login", dataGridViewLog[0, RowIndex].Value);
+            command.ExecuteNonQuery();
+
+            dataGridViewLog.Rows.RemoveAt(dataGridViewLog.CurrentCell.RowIndex);//удалене строки
+        }
+
+        bool flag = true;
+        private async void TabControl1_Click(object sender, EventArgs e)
+        {
+            
+            if (tabControl1.SelectedTab.Text == "Log in" && flag)
             {
-                CurrentCellText = Convert.ToString(dataGridView.CurrentCell.Value);
-                RowIndex = dataGridView.CurrentCell.RowIndex;
-                ColumnIndex = dataGridView.CurrentCell.ColumnIndex;
+                flag = false;
+                SqlDataReader sqlReader = null;
+                SqlCommand command = new SqlCommand("SELECT * FROM [Log in]", sqlConnection);
+                try
+                {
+                    sqlReader = await command.ExecuteReaderAsync();
+
+                    while (await sqlReader.ReadAsync())
+                    {
+                       dataGridViewLog.Rows.Add(Convert.ToString(sqlReader["Login"]), Convert.ToString(sqlReader["Password"]), Convert.ToString(sqlReader["Name"]), Convert.ToString(sqlReader["AccessTest"]));
+                    }
+                    CurrentCellText = Convert.ToString(dataGridViewLog.CurrentCell.Value);
+                    RowIndex = dataGridViewLog.CurrentCell.RowIndex;
+                    ColumnIndex = dataGridViewLog.CurrentCell.ColumnIndex;
+
+                }
+                finally
+                {
+                    if (sqlReader != null)
+                        sqlReader.Close();
+                }
             }
-            String temp = Convert.ToString(dataGridView[ColumnIndex, RowIndex].Value);
+        }
+
+        private async void DataGridViewLog_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            if (RowIndex >= dataGridViewLog.Rows.Count) //срабатывает после удаления последней строки
+            {
+                CurrentCellText = Convert.ToString(dataGridViewLog.CurrentCell.Value);
+                RowIndex = dataGridViewLog.CurrentCell.RowIndex;
+                ColumnIndex = dataGridViewLog.CurrentCell.ColumnIndex;
+            }
+            String temp = Convert.ToString(dataGridViewLog[ColumnIndex, RowIndex].Value);
             if (CurrentCellText != temp)
             {
                 if (temp == "") //проверка на пустоту строки
                 {
-                    dataGridView[ColumnIndex, RowIndex].Value = CurrentCellText;
-                }
-                else if (Convert.ToString(dataGridView[0, RowIndex].Value) == "") //проверка id
-                {
-                    // добавление в бд (сделать)
+                    dataGridViewLog[ColumnIndex, RowIndex].Value = CurrentCellText;
                 }
                 else //изменение в бд
                 {
                     SqlCommand command = null;
                     switch (ColumnIndex)
                     {
-                        case 1: //Имя
-                            command = new SqlCommand("UPDATE [Test] SET [Name] = @Name WHERE [Id] = @Id", sqlConnection);
-                            command.Parameters.AddWithValue("id", Convert.ToInt32(dataGridView[0, RowIndex].Value));
+                        case 1: //пароль
+                            command = new SqlCommand("UPDATE [Log in] SET [Password] = @Password WHERE [Login] = @Login", sqlConnection);
+                            command.Parameters.AddWithValue("Login", Convert.ToString(dataGridViewLog[0, RowIndex].Value));
+                            command.Parameters.AddWithValue("Password", temp);
+                            break;
+                        case 2://Имя
+                            command = new SqlCommand("UPDATE [Log in] SET [Name] = @Work WHERE [Login] = @Login", sqlConnection);
+                            command.Parameters.AddWithValue("Login", Convert.ToString(dataGridViewLog[0, RowIndex].Value));
                             command.Parameters.AddWithValue("Name", temp);
                             break;
-                        case 2://Работа
-                            command = new SqlCommand("UPDATE [Test] SET [Work] = @Work WHERE [Id] = @Id", sqlConnection);
-                            command.Parameters.AddWithValue("id", Convert.ToInt32(dataGridView[0, RowIndex].Value));
-                            command.Parameters.AddWithValue("Work", temp);
-                            break;
-                        case 3://Дата
-                            command = new SqlCommand("UPDATE [Test] SET [Date] = @Date WHERE [Id] = @Id", sqlConnection);
-                            command.Parameters.AddWithValue("id", Convert.ToInt32(dataGridView[0, RowIndex].Value));
-                            command.Parameters.AddWithValue("Date", temp);
+                        case 3://Доступ
+                            command = new SqlCommand("UPDATE [Log in] SET [AccessTest] = @AccessTest WHERE [Login] = @Login", sqlConnection);
+                            command.Parameters.AddWithValue("Login", Convert.ToString(dataGridViewLog[0, RowIndex].Value));
+                            command.Parameters.AddWithValue("AccessTest", temp);
                             break;
 
                     }
@@ -220,26 +223,48 @@ namespace dateBase_
             }
         }
 
-        private void DataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void DataGridViewLog_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            CurrentCellText = Convert.ToString(dataGridView.CurrentCell.Value);
-            RowIndex = dataGridView.CurrentCell.RowIndex;
-            ColumnIndex = dataGridView.CurrentCell.ColumnIndex;
-        }/////////////////////////////////////////
 
-        //Контекстное меню
-        private void DataGridView_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+            CurrentCellText = Convert.ToString(dataGridViewLog.CurrentCell.Value);
+            RowIndex = dataGridViewLog.CurrentCell.RowIndex;
+            ColumnIndex = dataGridViewLog.CurrentCell.ColumnIndex;
+        }
+
+        private void DataGridViewLog_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
             e.Control.ContextMenuStrip = contextMenuStrip1;
         }
 
-        private void УдалитьToolStripMenuItem_Click(object sender, EventArgs e)
+        private async void ButtonAdd_Click(object sender, EventArgs e)
         {
-            SqlCommand command = new SqlCommand("DELETE FROM [Test] WHERE [Id] = @Id", sqlConnection);
-            command.Parameters.AddWithValue("@Id", dataGridView[0, RowIndex].Value);
-            command.ExecuteNonQuery();
+            if (textBoxLog.Text == "" || textBoxPass.Text == "" || textBoxName.Text == "" || textBoxAss.Text == "")
+            {
+                labelErorr.Text = "Для добавление в базу, все поля должны быть заполнены!";
+                labelErorr.Visible = true;
+            }
+            else
+            {
+                labelErorr.Visible = false;
+                SqlCommand commandAdd = new SqlCommand("INSERT INTO [Log in] (Login, Password, Name, AccessTest)VALUES(@Login, @Password, @Name, @AccessTest)", sqlConnection);
+                commandAdd.Parameters.AddWithValue("Login", textBoxLog.Text);
+                commandAdd.Parameters.AddWithValue("Password", textBoxPass.Text);
+                commandAdd.Parameters.AddWithValue("Name", textBoxName.Text);
+                if (textBoxAss.Text == "1" || textBoxAss.Text == "True" || textBoxAss.Text == "true")
+                {
+                    commandAdd.Parameters.AddWithValue("AccessTest", true);
+                }
+                else
+                {
+                    commandAdd.Parameters.AddWithValue("AccessTest", false);
+                }
 
-            dataGridView.Rows.RemoveAt(dataGridView.CurrentCell.RowIndex);//удалене строки
+                await commandAdd.ExecuteNonQueryAsync();
+                string lastID = textBoxLog.Text;
+
+                //Вывод добавленной строки
+                OutputByID(lastID);
+            }
         }
     }
     
