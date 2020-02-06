@@ -41,29 +41,28 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageTest = new System.Windows.Forms.TabPage();
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.ColumnWork = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnPaul = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnAge = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnPosition = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnArranged = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPageLog = new System.Windows.Forms.TabPage();
+            this.buttonAdd = new System.Windows.Forms.Button();
+            this.textBoxAss = new System.Windows.Forms.TextBox();
+            this.textBoxName = new System.Windows.Forms.TextBox();
+            this.textBoxPass = new System.Windows.Forms.TextBox();
+            this.textBoxLog = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.dataGridViewLog = new System.Windows.Forms.DataGridView();
             this.ColumnLog = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnPassword = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnName_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnAssecc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBoxLog = new System.Windows.Forms.TextBox();
-            this.textBoxPass = new System.Windows.Forms.TextBox();
-            this.textBoxName = new System.Windows.Forms.TextBox();
-            this.textBoxAss = new System.Windows.Forms.TextBox();
-            this.buttonAdd = new System.Windows.Forms.Button();
+            this.ColumnWork = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnPaul = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnAge = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnPosition = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -207,7 +206,6 @@
             this.ColumnPaul,
             this.ColumnAge,
             this.ColumnPosition,
-            this.ColumnArranged,
             this.ColumnTime,
             this.ColumnId});
             this.dataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -219,6 +217,147 @@
             this.dataGridView.RowTemplate.Height = 24;
             this.dataGridView.Size = new System.Drawing.Size(983, 503);
             this.dataGridView.TabIndex = 3;
+            // 
+            // tabPageLog
+            // 
+            this.tabPageLog.Controls.Add(this.buttonAdd);
+            this.tabPageLog.Controls.Add(this.textBoxAss);
+            this.tabPageLog.Controls.Add(this.textBoxName);
+            this.tabPageLog.Controls.Add(this.textBoxPass);
+            this.tabPageLog.Controls.Add(this.textBoxLog);
+            this.tabPageLog.Controls.Add(this.label4);
+            this.tabPageLog.Controls.Add(this.label3);
+            this.tabPageLog.Controls.Add(this.label2);
+            this.tabPageLog.Controls.Add(this.label1);
+            this.tabPageLog.Controls.Add(this.dataGridViewLog);
+            this.tabPageLog.Location = new System.Drawing.Point(4, 25);
+            this.tabPageLog.Name = "tabPageLog";
+            this.tabPageLog.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageLog.Size = new System.Drawing.Size(989, 509);
+            this.tabPageLog.TabIndex = 1;
+            this.tabPageLog.Text = "Log in";
+            this.tabPageLog.UseVisualStyleBackColor = true;
+            // 
+            // buttonAdd
+            // 
+            this.buttonAdd.Location = new System.Drawing.Point(714, 48);
+            this.buttonAdd.Name = "buttonAdd";
+            this.buttonAdd.Size = new System.Drawing.Size(95, 34);
+            this.buttonAdd.TabIndex = 3;
+            this.buttonAdd.Text = "Add";
+            this.buttonAdd.UseVisualStyleBackColor = true;
+            this.buttonAdd.Click += new System.EventHandler(this.ButtonAdd_Click);
+            // 
+            // textBoxAss
+            // 
+            this.textBoxAss.Location = new System.Drawing.Point(506, 60);
+            this.textBoxAss.Name = "textBoxAss";
+            this.textBoxAss.Size = new System.Drawing.Size(119, 22);
+            this.textBoxAss.TabIndex = 2;
+            // 
+            // textBoxName
+            // 
+            this.textBoxName.Location = new System.Drawing.Point(352, 60);
+            this.textBoxName.Name = "textBoxName";
+            this.textBoxName.Size = new System.Drawing.Size(119, 22);
+            this.textBoxName.TabIndex = 2;
+            // 
+            // textBoxPass
+            // 
+            this.textBoxPass.Location = new System.Drawing.Point(198, 60);
+            this.textBoxPass.Name = "textBoxPass";
+            this.textBoxPass.Size = new System.Drawing.Size(119, 22);
+            this.textBoxPass.TabIndex = 2;
+            // 
+            // textBoxLog
+            // 
+            this.textBoxLog.Location = new System.Drawing.Point(47, 60);
+            this.textBoxLog.Name = "textBoxLog";
+            this.textBoxLog.Size = new System.Drawing.Size(119, 22);
+            this.textBoxLog.TabIndex = 2;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(503, 27);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(81, 17);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "AccessTest";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(349, 27);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(45, 17);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "Name";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(195, 27);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(69, 17);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Password";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(44, 27);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(43, 17);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Login";
+            // 
+            // dataGridViewLog
+            // 
+            this.dataGridViewLog.AllowUserToAddRows = false;
+            this.dataGridViewLog.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewLog.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewLog.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColumnLog,
+            this.ColumnPassword,
+            this.ColumnName_,
+            this.ColumnAssecc});
+            this.dataGridViewLog.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dataGridViewLog.Location = new System.Drawing.Point(3, 122);
+            this.dataGridViewLog.Name = "dataGridViewLog";
+            this.dataGridViewLog.RowHeadersVisible = false;
+            this.dataGridViewLog.RowHeadersWidth = 51;
+            this.dataGridViewLog.RowTemplate.Height = 24;
+            this.dataGridViewLog.Size = new System.Drawing.Size(983, 384);
+            this.dataGridViewLog.TabIndex = 0;
+            this.dataGridViewLog.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewLog_CellClick);
+            this.dataGridViewLog.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewLog_CellEndEdit);
+            this.dataGridViewLog.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.DataGridViewLog_EditingControlShowing);
+            // 
+            // ColumnLog
+            // 
+            this.ColumnLog.HeaderText = "Login";
+            this.ColumnLog.MinimumWidth = 6;
+            this.ColumnLog.Name = "ColumnLog";
+            this.ColumnLog.ReadOnly = true;
+            // 
+            // ColumnPassword
+            // 
+            this.ColumnPassword.HeaderText = "Password";
+            this.ColumnPassword.MinimumWidth = 6;
+            this.ColumnPassword.Name = "ColumnPassword";
+            // 
+            // ColumnName_
+            // 
+            this.ColumnName_.HeaderText = "Name";
+            this.ColumnName_.MinimumWidth = 6;
+            this.ColumnName_.Name = "ColumnName_";
+            // 
+            // ColumnAssecc
+            // 
+            this.ColumnAssecc.HeaderText = "Access";
+            this.ColumnAssecc.MinimumWidth = 6;
+            this.ColumnAssecc.Name = "ColumnAssecc";
             // 
             // ColumnWork
             // 
@@ -255,16 +394,9 @@
             this.ColumnPosition.Name = "ColumnPosition";
             this.ColumnPosition.ReadOnly = true;
             // 
-            // ColumnArranged
-            // 
-            this.ColumnArranged.HeaderText = "Arranged";
-            this.ColumnArranged.MinimumWidth = 6;
-            this.ColumnArranged.Name = "ColumnArranged";
-            this.ColumnArranged.ReadOnly = true;
-            // 
             // ColumnTime
             // 
-            this.ColumnTime.HeaderText = "Time";
+            this.ColumnTime.HeaderText = "Date";
             this.ColumnTime.MinimumWidth = 6;
             this.ColumnTime.Name = "ColumnTime";
             this.ColumnTime.ReadOnly = true;
@@ -276,146 +408,6 @@
             this.ColumnId.Name = "ColumnId";
             this.ColumnId.ReadOnly = true;
             this.ColumnId.Visible = false;
-            // 
-            // tabPageLog
-            // 
-            this.tabPageLog.Controls.Add(this.buttonAdd);
-            this.tabPageLog.Controls.Add(this.textBoxAss);
-            this.tabPageLog.Controls.Add(this.textBoxName);
-            this.tabPageLog.Controls.Add(this.textBoxPass);
-            this.tabPageLog.Controls.Add(this.textBoxLog);
-            this.tabPageLog.Controls.Add(this.label4);
-            this.tabPageLog.Controls.Add(this.label3);
-            this.tabPageLog.Controls.Add(this.label2);
-            this.tabPageLog.Controls.Add(this.label1);
-            this.tabPageLog.Controls.Add(this.dataGridViewLog);
-            this.tabPageLog.Location = new System.Drawing.Point(4, 25);
-            this.tabPageLog.Name = "tabPageLog";
-            this.tabPageLog.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageLog.Size = new System.Drawing.Size(989, 509);
-            this.tabPageLog.TabIndex = 1;
-            this.tabPageLog.Text = "Log in";
-            this.tabPageLog.UseVisualStyleBackColor = true;
-            // 
-            // dataGridViewLog
-            // 
-            this.dataGridViewLog.AllowUserToAddRows = false;
-            this.dataGridViewLog.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridViewLog.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewLog.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ColumnLog,
-            this.ColumnPassword,
-            this.ColumnName_,
-            this.ColumnAssecc});
-            this.dataGridViewLog.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dataGridViewLog.Location = new System.Drawing.Point(3, 122);
-            this.dataGridViewLog.Name = "dataGridViewLog";
-            this.dataGridViewLog.RowHeadersVisible = false;
-            this.dataGridViewLog.RowHeadersWidth = 51;
-            this.dataGridViewLog.RowTemplate.Height = 24;
-            this.dataGridViewLog.Size = new System.Drawing.Size(983, 384);
-            this.dataGridViewLog.TabIndex = 0;
-            this.dataGridViewLog.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewLog_CellClick);
-            this.dataGridViewLog.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewLog_CellEndEdit);
-            this.dataGridViewLog.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.DataGridViewLog_EditingControlShowing);
-            // 
-            // ColumnLog
-            // 
-            this.ColumnLog.HeaderText = "Login";
-            this.ColumnLog.MinimumWidth = 6;
-            this.ColumnLog.Name = "ColumnLog";
-            // 
-            // ColumnPassword
-            // 
-            this.ColumnPassword.HeaderText = "Password";
-            this.ColumnPassword.MinimumWidth = 6;
-            this.ColumnPassword.Name = "ColumnPassword";
-            // 
-            // ColumnName_
-            // 
-            this.ColumnName_.HeaderText = "Name";
-            this.ColumnName_.MinimumWidth = 6;
-            this.ColumnName_.Name = "ColumnName_";
-            // 
-            // ColumnAssecc
-            // 
-            this.ColumnAssecc.HeaderText = "Access";
-            this.ColumnAssecc.MinimumWidth = 6;
-            this.ColumnAssecc.Name = "ColumnAssecc";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(44, 27);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(43, 17);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Login";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(195, 27);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(69, 17);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Password";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(349, 27);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(45, 17);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "Name";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(503, 27);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(81, 17);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "AccessTest";
-            // 
-            // textBoxLog
-            // 
-            this.textBoxLog.Location = new System.Drawing.Point(47, 60);
-            this.textBoxLog.Name = "textBoxLog";
-            this.textBoxLog.Size = new System.Drawing.Size(119, 22);
-            this.textBoxLog.TabIndex = 2;
-            // 
-            // textBoxPass
-            // 
-            this.textBoxPass.Location = new System.Drawing.Point(198, 60);
-            this.textBoxPass.Name = "textBoxPass";
-            this.textBoxPass.Size = new System.Drawing.Size(119, 22);
-            this.textBoxPass.TabIndex = 2;
-            // 
-            // textBoxName
-            // 
-            this.textBoxName.Location = new System.Drawing.Point(352, 60);
-            this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(119, 22);
-            this.textBoxName.TabIndex = 2;
-            // 
-            // textBoxAss
-            // 
-            this.textBoxAss.Location = new System.Drawing.Point(506, 60);
-            this.textBoxAss.Name = "textBoxAss";
-            this.textBoxAss.Size = new System.Drawing.Size(119, 22);
-            this.textBoxAss.TabIndex = 2;
-            // 
-            // buttonAdd
-            // 
-            this.buttonAdd.Location = new System.Drawing.Point(714, 48);
-            this.buttonAdd.Name = "buttonAdd";
-            this.buttonAdd.Size = new System.Drawing.Size(95, 34);
-            this.buttonAdd.TabIndex = 3;
-            this.buttonAdd.Text = "Add";
-            this.buttonAdd.UseVisualStyleBackColor = true;
-            this.buttonAdd.Click += new System.EventHandler(this.ButtonAdd_Click);
             // 
             // Form1
             // 
@@ -458,19 +450,7 @@
         private System.Windows.Forms.TabPage tabPageTest;
         private System.Windows.Forms.TabPage tabPageLog;
         private System.Windows.Forms.DataGridView dataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnWork;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPaul;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAge;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPosition;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnArranged;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTime;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnId;
         private System.Windows.Forms.DataGridView dataGridViewLog;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnLog;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPassword;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnName_;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAssecc;
         private System.Windows.Forms.Button buttonAdd;
         private System.Windows.Forms.TextBox textBoxAss;
         private System.Windows.Forms.TextBox textBoxName;
@@ -480,6 +460,17 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnLog;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPassword;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnName_;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAssecc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnWork;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPaul;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAge;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPosition;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnId;
     }
 }
 

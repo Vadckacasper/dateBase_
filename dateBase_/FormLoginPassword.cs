@@ -84,6 +84,7 @@ namespace dateBase_
                 using (var dataReader = command.ExecuteReader())
                 {
                     success = dataReader.Read();
+                    if (success)
                     temp = Convert.ToBoolean(dataReader["AccessTest"]);
 
                 }

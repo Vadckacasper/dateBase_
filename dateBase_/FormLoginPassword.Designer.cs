@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.labelClose = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxPassword = new System.Windows.Forms.TextBox();
             this.textBoxLogin = new System.Windows.Forms.TextBox();
-            this.labelClose = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,6 +51,32 @@
             this.panel1.TabIndex = 0;
             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Panel1_MouseDown);
             this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Panel1_MouseMove);
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button1.Location = new System.Drawing.Point(170, 432);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(150, 38);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "Enter";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
+            // 
+            // labelClose
+            // 
+            this.labelClose.AutoSize = true;
+            this.labelClose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.labelClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelClose.ForeColor = System.Drawing.Color.DimGray;
+            this.labelClose.Location = new System.Drawing.Point(487, 0);
+            this.labelClose.Name = "labelClose";
+            this.labelClose.Size = new System.Drawing.Size(21, 20);
+            this.labelClose.TabIndex = 2;
+            this.labelClose.Text = "X";
+            this.labelClose.Click += new System.EventHandler(this.LabelClose_Click);
+            this.labelClose.MouseEnter += new System.EventHandler(this.LabelClose_MouseEnter);
+            this.labelClose.MouseLeave += new System.EventHandler(this.LabelClose_MouseLeave);
             // 
             // label1
             // 
@@ -71,6 +97,7 @@
             this.textBoxPassword.Name = "textBoxPassword";
             this.textBoxPassword.Size = new System.Drawing.Size(285, 45);
             this.textBoxPassword.TabIndex = 0;
+            this.textBoxPassword.TabStop = false;
             this.textBoxPassword.Text = "Password";
             this.textBoxPassword.Click += new System.EventHandler(this.TextBoxPassword_Click);
             // 
@@ -83,34 +110,9 @@
             this.textBoxLogin.Name = "textBoxLogin";
             this.textBoxLogin.Size = new System.Drawing.Size(285, 45);
             this.textBoxLogin.TabIndex = 0;
+            this.textBoxLogin.TabStop = false;
             this.textBoxLogin.Text = "Login";
             this.textBoxLogin.Enter += new System.EventHandler(this.TextBoxLogin_Enter);
-            // 
-            // labelClose
-            // 
-            this.labelClose.AutoSize = true;
-            this.labelClose.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.labelClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelClose.ForeColor = System.Drawing.Color.DimGray;
-            this.labelClose.Location = new System.Drawing.Point(487, 0);
-            this.labelClose.Name = "labelClose";
-            this.labelClose.Size = new System.Drawing.Size(21, 20);
-            this.labelClose.TabIndex = 2;
-            this.labelClose.Text = "X";
-            this.labelClose.Click += new System.EventHandler(this.LabelClose_Click);
-            this.labelClose.MouseEnter += new System.EventHandler(this.LabelClose_MouseEnter);
-            this.labelClose.MouseLeave += new System.EventHandler(this.LabelClose_MouseLeave);
-            // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(170, 432);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(150, 38);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Enter";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // FormLoginPassword
             // 

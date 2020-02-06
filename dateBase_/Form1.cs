@@ -13,6 +13,7 @@ namespace dateBase_
 {
     public partial class Form1 : Form
     {
+
         SqlConnection sqlConnection;
         String CurrentCellText = null;
         int RowIndex = 0;
@@ -40,7 +41,7 @@ namespace dateBase_
 
                 while (await sqlReader.ReadAsync())
                 {
-                    dataGridView.Rows.Add(Convert.ToString(sqlReader["Login"]), Convert.ToString(sqlReader["Name"]), Convert.ToString(sqlReader["Paul"]), Convert.ToString(sqlReader["Age"]), Convert.ToString(sqlReader["Position"]), Convert.ToString(sqlReader["Arranged"]), Convert.ToString(sqlReader["Time"]), Convert.ToString(sqlReader["id"]));
+                    dataGridView.Rows.Add(Convert.ToString(sqlReader["Login"]), Convert.ToString(sqlReader["Name"]), Convert.ToString(sqlReader["Paul"]), Convert.ToString(sqlReader["Age"]), Convert.ToString(sqlReader["Position"]), Convert.ToString(sqlReader["Date"]), Convert.ToString(sqlReader["id"]));
                     }
             }
             finally
@@ -135,6 +136,10 @@ namespace dateBase_
             {
                 if (sqlReader != null)
                     sqlReader.Close();
+                textBoxLog.Text = "";
+                textBoxPass.Text = "";
+                textBoxName.Text = "";
+                textBoxAss.Text = "";
             }
         }/////////////////////
 
@@ -144,14 +149,14 @@ namespace dateBase_
 
         private void УдалитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SqlCommand command = new SqlCommand("DELETE FROM [Test] WHERE [Login] = @Login", sqlConnection);
+            SqlCommand command = new SqlCommand("DELETE FROM [Log in] WHERE [Login] = @Login", sqlConnection);
             command.Parameters.AddWithValue("@Login", dataGridViewLog[0, RowIndex].Value);
             command.ExecuteNonQuery();
 
             dataGridViewLog.Rows.RemoveAt(dataGridViewLog.CurrentCell.RowIndex);//удалене строки
         }
 
-        bool flag = true;
+        bool flag = true;//переделать
         private async void TabControl1_Click(object sender, EventArgs e)
         {
             
@@ -207,14 +212,23 @@ namespace dateBase_
                             command.Parameters.AddWithValue("Password", temp);
                             break;
                         case 2://Имя
-                            command = new SqlCommand("UPDATE [Log in] SET [Name] = @Work WHERE [Login] = @Login", sqlConnection);
+                            command = new SqlCommand("UPDATE [Log in] SET [Name] = @Name WHERE [Login] = @Login", sqlConnection);
                             command.Parameters.AddWithValue("Login", Convert.ToString(dataGridViewLog[0, RowIndex].Value));
                             command.Parameters.AddWithValue("Name", temp);
                             break;
                         case 3://Доступ
                             command = new SqlCommand("UPDATE [Log in] SET [AccessTest] = @AccessTest WHERE [Login] = @Login", sqlConnection);
                             command.Parameters.AddWithValue("Login", Convert.ToString(dataGridViewLog[0, RowIndex].Value));
-                            command.Parameters.AddWithValue("AccessTest", temp);
+                            if (temp == "1" || temp == "True" || temp == "true")
+                            {
+                                command.Parameters.AddWithValue("AccessTest", true);
+                                dataGridViewLog[ColumnIndex, RowIndex].Value = "True";
+                            }
+                            else
+                            {
+                                command.Parameters.AddWithValue("AccessTest", false);
+                                dataGridViewLog[ColumnIndex, RowIndex].Value = "False";
+                            }
                             break;
 
                     }
@@ -238,6 +252,8 @@ namespace dateBase_
 
         private async void ButtonAdd_Click(object sender, EventArgs e)
         {
+            labelErorr.Visible = false;
+            if (!CheckLogin(textBoxLog.Text)) //проверка логина
             if (textBoxLog.Text == "" || textBoxPass.Text == "" || textBoxName.Text == "" || textBoxAss.Text == "")
             {
                 labelErorr.Text = "Для добавление в базу, все поля должны быть заполнены!";
@@ -266,7 +282,31 @@ namespace dateBase_
                 OutputByID(lastID);
             }
         }
+
+        private bool CheckLogin(string login)//Проверка логина на существование в бд
+        {
+            bool success = false;
+            try
+            {
+                SqlCommand command = new SqlCommand("SELECT [Login] FROM [Log in] WHERE Login = @Login ", sqlConnection);
+                command.Parameters.AddWithValue("@Login", login);
+
+                using (var dataReader = command.ExecuteReader())
+                {
+                    success = dataReader.Read();
+                }
+            }
+            finally
+            {
+                if (success)
+                {
+                    labelErorr.Text = "Логин уже существует!";
+                    labelErorr.Visible = true;
+                }
+            }
+            return success;
+        }
+        
     }
-    
 }
 
