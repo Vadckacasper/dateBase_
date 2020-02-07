@@ -100,6 +100,8 @@ namespace dateBase_
                 {
                     Form1 form1 = new Form1();
                     Hide();
+                    textBoxLogin.Text = "";
+                    textBoxPassword.Text = "";
                     form1.ShowDialog();
                     this.Visible = true;
                 }
@@ -107,6 +109,8 @@ namespace dateBase_
                 {
                     FormWork form1 = new FormWork(textBoxLogin.Text);
                     Hide();
+                    textBoxLogin.Text = "";
+                    textBoxPassword.Text = "";
                     form1.ShowDialog();
                     this.Visible = true;
                 }

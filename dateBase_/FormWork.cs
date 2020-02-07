@@ -155,24 +155,28 @@ namespace dateBase_
                         switch (ColumnIndex)//добавить обновление даты
                         {
                             case 1:
-                                command = new SqlCommand("UPDATE [Test] SET [Name] = @Name WHERE [Id] = @Id", sqlConnection);
+                                command = new SqlCommand("UPDATE [Test] SET [Name] = @Name , [Date] = @Date WHERE [Id] = @Id", sqlConnection);
                                 command.Parameters.AddWithValue("Id", Convert.ToString(dataGridViewWork[0, RowIndex].Value));
                                 command.Parameters.AddWithValue("Name", temp);
+                                command.Parameters.AddWithValue("Date", DateTime.Now);
                                 break;
                             case 2:
-                                command = new SqlCommand("UPDATE [Test] SET [Paul] = @Paul WHERE [Id] = @Id", sqlConnection);
+                                command = new SqlCommand("UPDATE [Test] SET [Paul] = @Paul , [Date] = @Date WHERE [Id] = @Id", sqlConnection);
                                 command.Parameters.AddWithValue("Id", Convert.ToString(dataGridViewWork[0, RowIndex].Value));
                                 command.Parameters.AddWithValue("Paul", temp);
+                                command.Parameters.AddWithValue("Date", DateTime.Now);
                                 break;
                             case 3:
-                                command = new SqlCommand("UPDATE [Test] SET [Age] = @Age WHERE [Id] = @Id", sqlConnection);
+                                command = new SqlCommand("UPDATE [Test] SET [Age] = @Age , [Date] = @Date WHERE [Id] = @Id", sqlConnection);
                                 command.Parameters.AddWithValue("Id", Convert.ToString(dataGridViewWork[0, RowIndex].Value));
                                 command.Parameters.AddWithValue("Age", temp);
+                                command.Parameters.AddWithValue("Date", DateTime.Now);
                                 break;
                             case 4:
-                                command = new SqlCommand("UPDATE [Test] SET [Position] = @Position WHERE [Id] = @Id", sqlConnection);
+                                command = new SqlCommand("UPDATE [Test] SET [Position] = @Position , [Date] = @Date WHERE [Id] = @Id", sqlConnection);
                                 command.Parameters.AddWithValue("Id", Convert.ToString(dataGridViewWork[0, RowIndex].Value));
                                 command.Parameters.AddWithValue("Position", temp);
+                                command.Parameters.AddWithValue("Date", DateTime.Now);
                                 break;
                         }
                         await command.ExecuteNonQueryAsync();
@@ -224,6 +228,21 @@ namespace dateBase_
                 e.Control.ContextMenuStrip = contextMenuStrip1;
                 this.удалитьToolStripMenuItem.Enabled = false;
             }
+        }
+
+        private void IntelligToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SqlCommand command = new SqlCommand("SELECT * FROM [Log in] WHERE Login = @Login ", sqlConnection);
+            command.Parameters.AddWithValue("Login", Login);
+            String name = null;
+            using (var dataReader = command.ExecuteReader())
+            {
+                dataReader.Read();
+                name = Convert.ToString(dataReader["Name"]);
+            }
+            MessageBox.Show("Ваш логин: " + Login + "\n" +
+                            "Ваше имя: " + name + "\n\n" +
+                            "Разработчик: Калинин В.А.", "Cведениe");
         }
     }
 

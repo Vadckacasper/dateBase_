@@ -18,6 +18,7 @@ namespace dateBase_
         String CurrentCellText = null;
         int RowIndex = 0;
         int ColumnIndex = 0;
+        int Id = 0;
         public Form1()
         {
             InitializeComponent();
@@ -42,7 +43,8 @@ namespace dateBase_
                 while (await sqlReader.ReadAsync())
                 {
                     dataGridView.Rows.Add(Convert.ToString(sqlReader["Login"]), Convert.ToString(sqlReader["Name"]), Convert.ToString(sqlReader["Paul"]), Convert.ToString(sqlReader["Age"]), Convert.ToString(sqlReader["Position"]), Convert.ToString(sqlReader["Date"]), Convert.ToString(sqlReader["id"]));
-                    }
+                    Id = Convert.ToInt32(sqlReader["Id"]);
+                }
             }
             finally
             {
@@ -156,15 +158,17 @@ namespace dateBase_
             dataGridViewLog.Rows.RemoveAt(dataGridViewLog.CurrentCell.RowIndex);//удалене строки
         }
 
-        bool flag = true;//переделать
+
+        String Login = "";
         private async void TabControl1_Click(object sender, EventArgs e)
         {
             
-            if (tabControl1.SelectedTab.Text == "Log in" && flag)
+            if (tabControl1.SelectedTab.Text == "Log in")
             {
-                flag = false;
+                
                 SqlDataReader sqlReader = null;
-                SqlCommand command = new SqlCommand("SELECT * FROM [Log in]", sqlConnection);
+                SqlCommand command = new SqlCommand("SELECT * FROM [Log in] WHERE Login > @Login", sqlConnection);
+                command.Parameters.AddWithValue("Login", Login);
                 try
                 {
                     sqlReader = await command.ExecuteReaderAsync();
@@ -172,11 +176,32 @@ namespace dateBase_
                     while (await sqlReader.ReadAsync())
                     {
                        dataGridViewLog.Rows.Add(Convert.ToString(sqlReader["Login"]), Convert.ToString(sqlReader["Password"]), Convert.ToString(sqlReader["Name"]), Convert.ToString(sqlReader["AccessTest"]));
+                       Login = Convert.ToString(sqlReader["Login"]);
                     }
                     CurrentCellText = Convert.ToString(dataGridViewLog.CurrentCell.Value);
                     RowIndex = dataGridViewLog.CurrentCell.RowIndex;
                     ColumnIndex = dataGridViewLog.CurrentCell.ColumnIndex;
 
+                }
+                finally
+                {
+                        if (sqlReader != null)
+                        sqlReader.Close();
+                }
+            } else if (tabControl1.SelectedTab.Text == "TEST")
+            {
+                SqlDataReader sqlReader = null;
+                SqlCommand command = new SqlCommand("SELECT * FROM [Test] WHERE Id > @Id", sqlConnection);
+                command.Parameters.AddWithValue("Id", Id);
+                try
+                {
+                    sqlReader = await command.ExecuteReaderAsync();
+
+                    while (await sqlReader.ReadAsync())
+                    {
+                        dataGridView.Rows.Add(Convert.ToString(sqlReader["Login"]), Convert.ToString(sqlReader["Name"]), Convert.ToString(sqlReader["Paul"]), Convert.ToString(sqlReader["Age"]), Convert.ToString(sqlReader["Position"]), Convert.ToString(sqlReader["Date"]), Convert.ToString(sqlReader["id"]));
+                        Id = Convert.ToInt32(sqlReader["Id"]);
+                    }
                 }
                 finally
                 {

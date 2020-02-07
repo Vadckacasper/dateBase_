@@ -30,18 +30,19 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dataGridViewWork = new System.Windows.Forms.DataGridView();
-            this.labelExit = new System.Windows.Forms.Label();
-            this.labelRollUp = new System.Windows.Forms.Label();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.labelEx = new System.Windows.Forms.Label();
-            this.label_ = new System.Windows.Forms.Label();
             this.ColumnWork = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnPaul = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnAge = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnPosition = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.labelExit = new System.Windows.Forms.Label();
+            this.labelRollUp = new System.Windows.Forms.Label();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.IntelligToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.labelEx = new System.Windows.Forms.Label();
+            this.label_ = new System.Windows.Forms.Label();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.удалитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewWork)).BeginInit();
@@ -71,6 +72,37 @@
             this.dataGridViewWork.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewWork_CellClick);
             this.dataGridViewWork.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewWork_CellEndEdit);
             this.dataGridViewWork.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.DataGridViewWork_EditingControlShowing);
+            // 
+            // ColumnWork
+            // 
+            this.ColumnWork.HeaderText = "Id";
+            this.ColumnWork.MinimumWidth = 6;
+            this.ColumnWork.Name = "ColumnWork";
+            this.ColumnWork.Visible = false;
+            // 
+            // ColumnName
+            // 
+            this.ColumnName.HeaderText = "Name";
+            this.ColumnName.MinimumWidth = 6;
+            this.ColumnName.Name = "ColumnName";
+            // 
+            // ColumnPaul
+            // 
+            this.ColumnPaul.HeaderText = "Paul";
+            this.ColumnPaul.MinimumWidth = 6;
+            this.ColumnPaul.Name = "ColumnPaul";
+            // 
+            // ColumnAge
+            // 
+            this.ColumnAge.HeaderText = "Age";
+            this.ColumnAge.MinimumWidth = 6;
+            this.ColumnAge.Name = "ColumnAge";
+            // 
+            // ColumnPosition
+            // 
+            this.ColumnPosition.HeaderText = "Position";
+            this.ColumnPosition.MinimumWidth = 6;
+            this.ColumnPosition.Name = "ColumnPosition";
             // 
             // labelExit
             // 
@@ -115,17 +147,25 @@
             // файлToolStripMenuItem
             // 
             this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.выходToolStripMenuItem});
+            this.IntelligToolStripMenuItem,
+            this.exitToolStripMenuItem});
             this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
             this.файлToolStripMenuItem.Size = new System.Drawing.Size(44, 27);
             this.файлToolStripMenuItem.Text = "file";
             // 
-            // выходToolStripMenuItem
+            // IntelligToolStripMenuItem
             // 
-            this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
-            this.выходToolStripMenuItem.Size = new System.Drawing.Size(116, 26);
-            this.выходToolStripMenuItem.Text = "Exit";
-            this.выходToolStripMenuItem.Click += new System.EventHandler(this.ВыходToolStripMenuItem_Click);
+            this.IntelligToolStripMenuItem.Name = "IntelligToolStripMenuItem";
+            this.IntelligToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.IntelligToolStripMenuItem.Text = "Intelligence";
+            this.IntelligToolStripMenuItem.Click += new System.EventHandler(this.IntelligToolStripMenuItem_Click);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.ВыходToolStripMenuItem_Click);
             // 
             // labelEx
             // 
@@ -159,50 +199,19 @@
             this.label_.MouseEnter += new System.EventHandler(this.LabelRollUp_MouseEnter);
             this.label_.MouseLeave += new System.EventHandler(this.LabelRollUp_MouseLeave);
             // 
-            // ColumnWork
-            // 
-            this.ColumnWork.HeaderText = "Id";
-            this.ColumnWork.MinimumWidth = 6;
-            this.ColumnWork.Name = "ColumnWork";
-            this.ColumnWork.Visible = false;
-            // 
-            // ColumnName
-            // 
-            this.ColumnName.HeaderText = "Name";
-            this.ColumnName.MinimumWidth = 6;
-            this.ColumnName.Name = "ColumnName";
-            // 
-            // ColumnPaul
-            // 
-            this.ColumnPaul.HeaderText = "Paul";
-            this.ColumnPaul.MinimumWidth = 6;
-            this.ColumnPaul.Name = "ColumnPaul";
-            // 
-            // ColumnAge
-            // 
-            this.ColumnAge.HeaderText = "Age";
-            this.ColumnAge.MinimumWidth = 6;
-            this.ColumnAge.Name = "ColumnAge";
-            // 
-            // ColumnPosition
-            // 
-            this.ColumnPosition.HeaderText = "Position";
-            this.ColumnPosition.MinimumWidth = 6;
-            this.ColumnPosition.Name = "ColumnPosition";
-            // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.удалитьToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(135, 28);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(123, 28);
             // 
             // удалитьToolStripMenuItem
             // 
             this.удалитьToolStripMenuItem.Name = "удалитьToolStripMenuItem";
-            this.удалитьToolStripMenuItem.Size = new System.Drawing.Size(134, 24);
-            this.удалитьToolStripMenuItem.Text = "Удалить";
+            this.удалитьToolStripMenuItem.Size = new System.Drawing.Size(122, 24);
+            this.удалитьToolStripMenuItem.Text = "Delete";
             this.удалитьToolStripMenuItem.Click += new System.EventHandler(this.УдалитьToolStripMenuItem_Click);
             // 
             // FormWork
@@ -235,7 +244,7 @@
         private System.Windows.Forms.Label labelRollUp;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem файлToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem выходToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem IntelligToolStripMenuItem;
         private System.Windows.Forms.Label labelEx;
         private System.Windows.Forms.Label label_;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnWork;
@@ -245,5 +254,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPosition;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem удалитьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
     }
 }

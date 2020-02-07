@@ -37,10 +37,17 @@
             this.labelExit = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.IntelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageTest = new System.Windows.Forms.TabPage();
             this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.ColumnWork = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnPaul = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnAge = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnPosition = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPageLog = new System.Windows.Forms.TabPage();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.textBoxAss = new System.Windows.Forms.TextBox();
@@ -56,13 +63,8 @@
             this.ColumnPassword = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnName_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnAssecc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnWork = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnPaul = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnAge = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnPosition = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.intelligenceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -79,13 +81,13 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.удалитьToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(135, 28);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(123, 28);
             // 
             // удалитьToolStripMenuItem
             // 
             this.удалитьToolStripMenuItem.Name = "удалитьToolStripMenuItem";
-            this.удалитьToolStripMenuItem.Size = new System.Drawing.Size(134, 24);
-            this.удалитьToolStripMenuItem.Text = "Удалить";
+            this.удалитьToolStripMenuItem.Size = new System.Drawing.Size(122, 24);
+            this.удалитьToolStripMenuItem.Text = "Delete";
             this.удалитьToolStripMenuItem.Click += new System.EventHandler(this.УдалитьToolStripMenuItem_Click);
             // 
             // panel1
@@ -147,7 +149,8 @@
             this.menuStrip1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.файлToolStripMenuItem});
+            this.файлToolStripMenuItem,
+            this.intelligenceToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(997, 34);
@@ -159,17 +162,18 @@
             // файлToolStripMenuItem
             // 
             this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.выходToolStripMenuItem});
+            this.IntelToolStripMenuItem,
+            this.exitToolStripMenuItem});
             this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
             this.файлToolStripMenuItem.Size = new System.Drawing.Size(44, 30);
             this.файлToolStripMenuItem.Text = "file";
             // 
-            // выходToolStripMenuItem
+            // IntelToolStripMenuItem
             // 
-            this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
-            this.выходToolStripMenuItem.Size = new System.Drawing.Size(116, 26);
-            this.выходToolStripMenuItem.Text = "Exit";
-            this.выходToolStripMenuItem.Click += new System.EventHandler(this.ВыходToolStripMenuItem_Click);
+            this.IntelToolStripMenuItem.Name = "IntelToolStripMenuItem";
+            this.IntelToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.IntelToolStripMenuItem.Text = "Intelligence";
+            this.IntelToolStripMenuItem.Click += new System.EventHandler(this.ВыходToolStripMenuItem_Click);
             // 
             // tabControl1
             // 
@@ -217,6 +221,56 @@
             this.dataGridView.RowTemplate.Height = 24;
             this.dataGridView.Size = new System.Drawing.Size(983, 503);
             this.dataGridView.TabIndex = 3;
+            // 
+            // ColumnWork
+            // 
+            this.ColumnWork.HeaderText = "Login";
+            this.ColumnWork.MinimumWidth = 6;
+            this.ColumnWork.Name = "ColumnWork";
+            this.ColumnWork.ReadOnly = true;
+            // 
+            // ColumnName
+            // 
+            this.ColumnName.HeaderText = "Name";
+            this.ColumnName.MinimumWidth = 6;
+            this.ColumnName.Name = "ColumnName";
+            this.ColumnName.ReadOnly = true;
+            // 
+            // ColumnPaul
+            // 
+            this.ColumnPaul.HeaderText = "Paul";
+            this.ColumnPaul.MinimumWidth = 6;
+            this.ColumnPaul.Name = "ColumnPaul";
+            this.ColumnPaul.ReadOnly = true;
+            // 
+            // ColumnAge
+            // 
+            this.ColumnAge.HeaderText = "Age";
+            this.ColumnAge.MinimumWidth = 6;
+            this.ColumnAge.Name = "ColumnAge";
+            this.ColumnAge.ReadOnly = true;
+            // 
+            // ColumnPosition
+            // 
+            this.ColumnPosition.HeaderText = "Position";
+            this.ColumnPosition.MinimumWidth = 6;
+            this.ColumnPosition.Name = "ColumnPosition";
+            this.ColumnPosition.ReadOnly = true;
+            // 
+            // ColumnTime
+            // 
+            this.ColumnTime.HeaderText = "Date";
+            this.ColumnTime.MinimumWidth = 6;
+            this.ColumnTime.Name = "ColumnTime";
+            this.ColumnTime.ReadOnly = true;
+            // 
+            // ColumnId
+            // 
+            this.ColumnId.HeaderText = "ID";
+            this.ColumnId.MinimumWidth = 6;
+            this.ColumnId.Name = "ColumnId";
+            this.ColumnId.ReadOnly = true;
+            this.ColumnId.Visible = false;
             // 
             // tabPageLog
             // 
@@ -359,55 +413,17 @@
             this.ColumnAssecc.MinimumWidth = 6;
             this.ColumnAssecc.Name = "ColumnAssecc";
             // 
-            // ColumnWork
+            // intelligenceToolStripMenuItem
             // 
-            this.ColumnWork.HeaderText = "Login";
-            this.ColumnWork.MinimumWidth = 6;
-            this.ColumnWork.Name = "ColumnWork";
-            this.ColumnWork.ReadOnly = true;
+            this.intelligenceToolStripMenuItem.Name = "intelligenceToolStripMenuItem";
+            this.intelligenceToolStripMenuItem.Size = new System.Drawing.Size(100, 30);
+            this.intelligenceToolStripMenuItem.Text = "Intelligence";
             // 
-            // ColumnName
+            // exitToolStripMenuItem
             // 
-            this.ColumnName.HeaderText = "Name";
-            this.ColumnName.MinimumWidth = 6;
-            this.ColumnName.Name = "ColumnName";
-            this.ColumnName.ReadOnly = true;
-            // 
-            // ColumnPaul
-            // 
-            this.ColumnPaul.HeaderText = "Paul";
-            this.ColumnPaul.MinimumWidth = 6;
-            this.ColumnPaul.Name = "ColumnPaul";
-            this.ColumnPaul.ReadOnly = true;
-            // 
-            // ColumnAge
-            // 
-            this.ColumnAge.HeaderText = "Age";
-            this.ColumnAge.MinimumWidth = 6;
-            this.ColumnAge.Name = "ColumnAge";
-            this.ColumnAge.ReadOnly = true;
-            // 
-            // ColumnPosition
-            // 
-            this.ColumnPosition.HeaderText = "Position";
-            this.ColumnPosition.MinimumWidth = 6;
-            this.ColumnPosition.Name = "ColumnPosition";
-            this.ColumnPosition.ReadOnly = true;
-            // 
-            // ColumnTime
-            // 
-            this.ColumnTime.HeaderText = "Date";
-            this.ColumnTime.MinimumWidth = 6;
-            this.ColumnTime.Name = "ColumnTime";
-            this.ColumnTime.ReadOnly = true;
-            // 
-            // ColumnId
-            // 
-            this.ColumnId.HeaderText = "ID";
-            this.ColumnId.MinimumWidth = 6;
-            this.ColumnId.Name = "ColumnId";
-            this.ColumnId.ReadOnly = true;
-            this.ColumnId.Visible = false;
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.exitToolStripMenuItem.Text = "Exit";
             // 
             // Form1
             // 
@@ -441,7 +457,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem файлToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem выходToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem IntelToolStripMenuItem;
         private System.Windows.Forms.Label labelExit;
         private System.Windows.Forms.Label labelRollUp;
         private System.Windows.Forms.Label labelErorr;
@@ -471,6 +487,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPosition;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnId;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem intelligenceToolStripMenuItem;
     }
 }
 
