@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.dataGridViewWork = new System.Windows.Forms.DataGridView();
             this.labelExit = new System.Windows.Forms.Label();
             this.labelRollUp = new System.Windows.Forms.Label();
@@ -41,9 +42,11 @@
             this.ColumnPaul = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnAge = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnPosition = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.удалитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewWork)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridViewWork
@@ -56,8 +59,7 @@
             this.ColumnName,
             this.ColumnPaul,
             this.ColumnAge,
-            this.ColumnPosition,
-            this.ColumnTime});
+            this.ColumnPosition});
             this.dataGridViewWork.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dataGridViewWork.Location = new System.Drawing.Point(0, 31);
             this.dataGridViewWork.Name = "dataGridViewWork";
@@ -68,6 +70,7 @@
             this.dataGridViewWork.TabIndex = 2;
             this.dataGridViewWork.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewWork_CellClick);
             this.dataGridViewWork.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewWork_CellEndEdit);
+            this.dataGridViewWork.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.DataGridViewWork_EditingControlShowing);
             // 
             // labelExit
             // 
@@ -158,7 +161,7 @@
             // 
             // ColumnWork
             // 
-            this.ColumnWork.HeaderText = "Login";
+            this.ColumnWork.HeaderText = "Id";
             this.ColumnWork.MinimumWidth = 6;
             this.ColumnWork.Name = "ColumnWork";
             this.ColumnWork.Visible = false;
@@ -187,12 +190,20 @@
             this.ColumnPosition.MinimumWidth = 6;
             this.ColumnPosition.Name = "ColumnPosition";
             // 
-            // ColumnTime
+            // contextMenuStrip1
             // 
-            this.ColumnTime.HeaderText = "Date";
-            this.ColumnTime.MinimumWidth = 6;
-            this.ColumnTime.Name = "ColumnTime";
-            this.ColumnTime.Visible = false;
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.удалитьToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(135, 28);
+            // 
+            // удалитьToolStripMenuItem
+            // 
+            this.удалитьToolStripMenuItem.Name = "удалитьToolStripMenuItem";
+            this.удалитьToolStripMenuItem.Size = new System.Drawing.Size(134, 24);
+            this.удалитьToolStripMenuItem.Text = "Удалить";
+            this.удалитьToolStripMenuItem.Click += new System.EventHandler(this.УдалитьToolStripMenuItem_Click);
             // 
             // FormWork
             // 
@@ -212,6 +223,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewWork)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -231,6 +243,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPaul;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAge;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPosition;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTime;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem удалитьToolStripMenuItem;
     }
 }

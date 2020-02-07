@@ -101,13 +101,14 @@ namespace dateBase_
                     Form1 form1 = new Form1();
                     Hide();
                     form1.ShowDialog();
-                    this.Close();
-                }else
+                    this.Visible = true;
+                }
+                else
                 {
                     FormWork form1 = new FormWork(textBoxLogin.Text);
                     Hide();
                     form1.ShowDialog();
-                    this.Close();
+                    this.Visible = true;
                 }
                 
             }
