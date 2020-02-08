@@ -129,7 +129,7 @@ namespace dateBase_
                     commandAdd.Parameters.AddWithValue("Paul", dataGridViewWork[2, RowIndex].Value);
                     commandAdd.Parameters.AddWithValue("Age", dataGridViewWork[3, RowIndex].Value);
                     commandAdd.Parameters.AddWithValue("Position", dataGridViewWork[4, RowIndex].Value);
-                    commandAdd.Parameters.AddWithValue("Date", DateTime.Now);
+                    commandAdd.Parameters.AddWithValue("Date", DateTime.Now.ToString("F"));
 
                     await commandAdd.ExecuteNonQueryAsync();
                     commandAdd.CommandText = "SELECT @@IDENTITY";//вернуть id
@@ -158,25 +158,25 @@ namespace dateBase_
                                 command = new SqlCommand("UPDATE [Test] SET [Name] = @Name , [Date] = @Date WHERE [Id] = @Id", sqlConnection);
                                 command.Parameters.AddWithValue("Id", Convert.ToString(dataGridViewWork[0, RowIndex].Value));
                                 command.Parameters.AddWithValue("Name", temp);
-                                command.Parameters.AddWithValue("Date", DateTime.Now);
+                                command.Parameters.AddWithValue("Date", Convert.ToString(DateTime.Now.ToString("F")));
                                 break;
                             case 2:
                                 command = new SqlCommand("UPDATE [Test] SET [Paul] = @Paul , [Date] = @Date WHERE [Id] = @Id", sqlConnection);
                                 command.Parameters.AddWithValue("Id", Convert.ToString(dataGridViewWork[0, RowIndex].Value));
                                 command.Parameters.AddWithValue("Paul", temp);
-                                command.Parameters.AddWithValue("Date", DateTime.Now);
+                                command.Parameters.AddWithValue("Date", Convert.ToString(DateTime.Now.ToString("F")));
                                 break;
                             case 3:
                                 command = new SqlCommand("UPDATE [Test] SET [Age] = @Age , [Date] = @Date WHERE [Id] = @Id", sqlConnection);
                                 command.Parameters.AddWithValue("Id", Convert.ToString(dataGridViewWork[0, RowIndex].Value));
                                 command.Parameters.AddWithValue("Age", temp);
-                                command.Parameters.AddWithValue("Date", DateTime.Now);
+                                command.Parameters.AddWithValue("Date", Convert.ToString(DateTime.Now.ToString("F")));
                                 break;
                             case 4:
                                 command = new SqlCommand("UPDATE [Test] SET [Position] = @Position , [Date] = @Date WHERE [Id] = @Id", sqlConnection);
                                 command.Parameters.AddWithValue("Id", Convert.ToString(dataGridViewWork[0, RowIndex].Value));
                                 command.Parameters.AddWithValue("Position", temp);
-                                command.Parameters.AddWithValue("Date", DateTime.Now);
+                                command.Parameters.AddWithValue("Date", Convert.ToString(DateTime.Now.ToString("F")));
                                 break;
                         }
                         await command.ExecuteNonQueryAsync();

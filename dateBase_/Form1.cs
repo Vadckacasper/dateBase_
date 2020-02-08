@@ -190,18 +190,34 @@ namespace dateBase_
                 }
             } else if (tabControl1.SelectedTab.Text == "TEST")
             {
+                int i = 0; //костыль
                 SqlDataReader sqlReader = null;
-                SqlCommand command = new SqlCommand("SELECT * FROM [Test] WHERE Id > @Id", sqlConnection);
-                command.Parameters.AddWithValue("Id", Id);
+                SqlCommand command = new SqlCommand("SELECT * FROM [Test] ", sqlConnection);
+               // command.Parameters.AddWithValue("Id", Id);
                 try
                 {
                     sqlReader = await command.ExecuteReaderAsync();
 
                     while (await sqlReader.ReadAsync())
                     {
-                        dataGridView.Rows.Add(Convert.ToString(sqlReader["Login"]), Convert.ToString(sqlReader["Name"]), Convert.ToString(sqlReader["Paul"]), Convert.ToString(sqlReader["Age"]), Convert.ToString(sqlReader["Position"]), Convert.ToString(sqlReader["Date"]), Convert.ToString(sqlReader["id"]));
-                        Id = Convert.ToInt32(sqlReader["Id"]);
+                        if (Convert.ToInt32(sqlReader["Id"]) > Id)
+                        {
+                            dataGridView.Rows.Add(Convert.ToString(sqlReader["Login"]), Convert.ToString(sqlReader["Name"]), Convert.ToString(sqlReader["Paul"]), Convert.ToString(sqlReader["Age"]), Convert.ToString(sqlReader["Position"]), Convert.ToString(sqlReader["Date"]), Convert.ToString(sqlReader["id"]));
+                            Id = Convert.ToInt32(sqlReader["Id"]);
+                        }
+                        if (Convert.ToString(dataGridView[5, i].Value) != Convert.ToString(sqlReader["Date"]))
+                        {
+                            dataGridView[0, i].Value = Convert.ToString(sqlReader["Login"]);
+                            dataGridView[1, i].Value = Convert.ToString(sqlReader["Name"]);
+                            dataGridView[2, i].Value = Convert.ToString(sqlReader["Paul"]);
+                            dataGridView[3, i].Value = Convert.ToString(sqlReader["Age"]);
+                            dataGridView[4, i].Value = Convert.ToString(sqlReader["Position"]);
+                            dataGridView[5, i].Value = Convert.ToString(sqlReader["Date"]);
+                        }
+                        i++;
+                        
                     }
+                    
                 }
                 finally
                 {

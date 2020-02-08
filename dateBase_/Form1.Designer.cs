@@ -38,6 +38,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.IntelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageTest = new System.Windows.Forms.TabPage();
             this.dataGridView = new System.Windows.Forms.DataGridView();
@@ -63,8 +64,6 @@
             this.ColumnPassword = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnName_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnAssecc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.intelligenceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -149,8 +148,7 @@
             this.menuStrip1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.файлToolStripMenuItem,
-            this.intelligenceToolStripMenuItem});
+            this.файлToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(997, 34);
@@ -174,6 +172,12 @@
             this.IntelToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.IntelToolStripMenuItem.Text = "Intelligence";
             this.IntelToolStripMenuItem.Click += new System.EventHandler(this.ВыходToolStripMenuItem_Click);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.exitToolStripMenuItem.Text = "Exit";
             // 
             // tabControl1
             // 
@@ -413,18 +417,6 @@
             this.ColumnAssecc.MinimumWidth = 6;
             this.ColumnAssecc.Name = "ColumnAssecc";
             // 
-            // intelligenceToolStripMenuItem
-            // 
-            this.intelligenceToolStripMenuItem.Name = "intelligenceToolStripMenuItem";
-            this.intelligenceToolStripMenuItem.Size = new System.Drawing.Size(100, 30);
-            this.intelligenceToolStripMenuItem.Text = "Intelligence";
-            // 
-            // exitToolStripMenuItem
-            // 
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.exitToolStripMenuItem.Text = "Exit";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -488,7 +480,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnId;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem intelligenceToolStripMenuItem;
     }
 }
 
